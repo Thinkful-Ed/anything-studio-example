@@ -1,0 +1,34 @@
+<div class="footer" ng-init="footer.tab = 1">
+
+  <div class="footer__button-containers">
+    <div class="btn-group" role="group">
+      <button
+        ng-repeat="tab in [1, 2, 3]"
+        ng-class="{'btn-success': footer.tab == tab}"
+        type="button"
+        class="btn btn-default"
+        ng-click="footer.tab = tab">
+        Service {{tab}}
+      </button>
+    </div>
+  </div>
+
+  <div class="footer__tab-content">
+   <div ng-switch on="footer.tab">
+     <div ng-switch-when="1">Shown when case is 1</div>
+     <div ng-switch-when="2">Shown when case is 2</div>
+     <div ng-switch-when="3">Shown when case is 3</div>
+   </div>
+  </div>
+
+</div>
+
+<style>
+  .footer__button-containers {
+    margin-top: 10px;
+    text-align: center;
+  }
+  .footer__tab-content {
+    font-size: 1.6rem;
+  }
+</style>

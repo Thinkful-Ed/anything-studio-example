@@ -1,0 +1,56 @@
+<div class="portfolio__container" ng-controller="PortfolioController">
+  <div class="form-group">
+    <label for="filter">Filter Images</label>
+    <input
+      id="filter"
+      class="form-control"
+      ng-model="portfolio.filter"
+      placeholder='Filter Your Images'
+      style="max-width: 400px"
+      type="text">
+  </div>
+  <br>
+  <div class="portfolio__list-container">
+    <div
+      ng-repeat="i in items | filter:portfolio.filter track by $index"
+      class="portfolio__list-item"
+      ng-class-odd="'portfolio__list-item--odd'">
+      <img class="portfolio__list-image" ng-src="img/{{i.src}}.jpg" alt="">
+      <span class="portfolio__image-title">{{i.title}}</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .form-group {
+    font-size: 1.6rem;
+  }
+  .portfolio__list-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .portfolio__list-item {
+    position: relative;
+    flex: 1;
+    min-width: 30rem;
+    max-width: 60rem;
+  }
+  .portfolio__list-image {
+    padding: 0.5rem;
+    max-width: calc(100% - 0.5rem);
+  }
+  .portfolio__image-title {
+    position: absolute;
+    height: 3rem;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(100, 100, 100, 0.6);
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 1.6rem;
+  }
+  .portfolio__list-item--odd {
+    background-color: #C1D3E2;
+  }
+</style>
